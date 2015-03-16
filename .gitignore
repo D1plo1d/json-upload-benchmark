@@ -16,3 +16,7 @@
 /rails/rails-benchmark/tmp
 
 /nodejs/node_modules
+
+/elixir/_build
+/elixir/deps
+/elixir/node_modules
