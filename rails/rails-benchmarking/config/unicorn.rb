@@ -1,4 +1,4 @@
-APP_PATH = "/srv/www/rails-benchmarking"
+APP_PATH = "/srv/www/json-upload-benchmark/rails/rails-benchmarking"
 # Sample verbose configuration file for Unicorn (not Rack)
 #
 # This configuration file documents many features of Unicorn
