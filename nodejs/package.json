@@ -1,0 +1,13 @@
+{
+  "name": "json-upload-benchmark",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "coffee-script": "*",
+    "ws": "*"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
