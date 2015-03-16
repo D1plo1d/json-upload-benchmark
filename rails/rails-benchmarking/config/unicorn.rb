@@ -26,7 +26,7 @@ working_directory APP_PATH
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen "/path/to/.unicorn.sock", :backlog => 64
+listen APP_PATH + "/rails-benchmarking.unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
@@ -39,7 +39,7 @@ pid APP_PATH + "/tmp/pid/unicorn.pid"
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
 stderr_path APP_PATH + "/log/unicorn.stderr.log"
-stdout_path APP_PATH + "log/unicorn.stdout.log"
+stdout_path APP_PATH + "/log/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
