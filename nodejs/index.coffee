@@ -8,12 +8,12 @@ class Controller
     wss = new WebSocketServer port: 8080
 
     wss.on 'connection', (ws) ->
-      setTimeout 8.0/1000, onConnection # Simulate an auth SQL query
+      setTimeout 8.0/1000, @onConnection # Simulate an auth SQL query
 
-  onConnection: ->
-    ws.on 'message', onMessage
+  onConnection: =>
+    ws.on 'message', @onMessage
 
-  onMessage: (message) ->
+  onMessage: (message) =>
     # No-Op (auth can be sent in connection)
 
 if cluster.isMaster
