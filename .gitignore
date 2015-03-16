@@ -5,12 +5,14 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+/rails/rails-benchmark/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/rails/rails-benchmark/db/*.sqlite3
+/rails/rails-benchmark/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+/rails/rails-benchmark/log/*.log
+/rails/rails-benchmark/tmp
+
+/nodejs/node_modules
