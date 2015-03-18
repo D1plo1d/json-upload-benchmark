@@ -1,0 +1,12 @@
+{
+  "name": "json-upload-benchmark",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "thor": "D1plo1d/thor#feature/on_open"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}

@@ -7,14 +7,22 @@ class Controller
   constructor: ->
     wss = new WebSocketServer port: 8080
 
-    wss.on 'connection', (ws) ->
-      setTimeout 8.0/1000, @onConnection # Simulate an auth SQL query
+    wss.on 'connection', @onConnection
 
-  onConnection: =>
-    ws.on 'message', @onMessage
+  onConnection: (ws) =>
+    # console.log "authorizing..."
+    setTimeout (=> @onAuth ws), 8 # Simulate an auth SQL query
 
-  onMessage: (message) =>
-    # No-Op (auth can be sent in connection)
+  onAuth: (ws) =>
+    # console.log "connected"
+    ws.on 'message', (message) => @onMessage ws, message
+
+  onMessage: (ws, message) =>
+    # console.log "received"
+    ws.send JSON.stringify
+      topic: "benchmark:123"
+      payload: {code: 200},
+      event: "message:accepted"
 
 if cluster.isMaster
   # Fork workers.

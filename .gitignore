@@ -20,3 +20,6 @@
 /elixir/_build
 /elixir/deps
 /elixir/node_modules
+
+/payload.json
+/node_modules
