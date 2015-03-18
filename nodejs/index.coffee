@@ -18,7 +18,9 @@ class Controller
     ws.on 'message', (message) => @onMessage ws, message
 
   onMessage: (ws, message) =>
+    message = JSON.parse message
     # console.log "received"
+    # console.log message
     ws.send JSON.stringify
       topic: "benchmark:123"
       payload: {code: 200},
