@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 
+def amount
+  (dev ? 10 : 100*1000)
+end
+
+def concurrency
+  (dev ? 10 : 10*1000)
+end
+
 def environment
   ARGV[1] || "development"
 end
@@ -8,13 +16,17 @@ def dev
   environment == "development"
 end
 
+def host
+  dev ? "127.0.0.1" : ARGV[2]
+end
+
 def thor(opts)
   cmd =  "./node_modules/thor/bin/thor"
   options = [
-    "ws://127.0.0.1:#{opts[:port]}/ws",
+    "ws://#{host}:#{opts[:port]}/ws",
     "--generator", "./generator.js",
-    "--amount", (dev ? "10" : "10000"),
-    "-C", (dev ? "10" : "1000"),
+    "--amount", amount.to_s,
+    "-C", (concurrency/10).to_i.to_s,
     "--messages", "10",
     "--masked"
   ]
@@ -31,7 +43,13 @@ when "nodejs"
     port: dev ? 8080 : 80
   )
 when "rails"
-  raise "TODO: Rails benchmark"
+  Process.exec "ab", *[
+    "-p", "./payload.json",
+    "-T", "application/json",
+    "-c", concurrency.to_s,
+    "-n", amount.to_s,
+    "http://#{host}:#{dev ? 3000 : 80}/"
+  ]
 else
-  puts "Useage: ./benchmark.rb [elixir|nodejs|rails]"
+  puts "Useage: ./benchmark.rb [elixir|nodejs|rails] [ENVIRONMENT] [HOST]"
 end
