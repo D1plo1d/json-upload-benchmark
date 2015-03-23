@@ -25,8 +25,8 @@ def thor(opts)
   options = [
     "ws://#{host}:#{opts[:port]}/ws",
     "--generator", "./generator.js",
-    "--amount", amount.to_s,
-    "-C", (concurrency/10).to_i.to_s,
+    "--amount", (amount/10).to_i.to_s,
+    "-C", concurrency.to_s,
     "--messages", "10",
     "--masked"
   ]

@@ -1,5 +1,5 @@
 WebSocket = require('ws')
-ws = new WebSocket('ws://ec2-54-164-101-98.compute-1.amazonaws.com/ws')
+ws = new WebSocket('ws://127.0.0.1/ws')
 
 ws.on 'open', ->
   console.log "authenticating"
