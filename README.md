@@ -1,7 +1,7 @@
 ## Running the Servers
 
 * **Elixir** - `./elixir/index.sh`
-* **Rails** - `cd ./rails/rails-benchmark/;RAILS_ENV=production unicorn ./config/unicorn.rb`
+* **Rails** - `cd /srv/www/json-upload-benchmark/rails/rails-benchmarking;RAILS_ENV=production unicorn -c ./config/unicorn.rb -D`
 * **NodeJS** - `coffee ./nodejs/index.coffee`
 
 ## Benchmarking the Servers
